@@ -19,51 +19,6 @@ class LoactionScreen extends StatefulWidget {
 class _LoactionScreenState extends State<LoactionScreen> {
   Constants mycon = Constants();
 
-  // String city = "";
-  // String temp = "";
-  // String hum = "";
-  // String air_speed = "";
-  // String des = "";
-  // String main = "";
-  // String icon = "";
-
-  // void startApp(String city) async {
-  //   information loc = information(city, temp, hum, air_speed, des, main, icon);
-  //   await loc.getData(); //.catchError((error) {
-  //   //   return showDialog<Null>(
-  //   //       context: context,
-  //   //       builder: (ctx) => AlertDialog(
-  //   //             title: Text("An  error occured"),
-  //   //             content: Text("Something went wrong."),
-  //   //             actions: [
-  //   //               TextButton(
-  //   //                   onPressed: () {
-  //   //                     Navigator.of(context).pop();
-  //   //                   },
-  //   //                   child: Text("Okay")),
-  //   //             ],
-  //   //           ));
-  //   // }).then((_) => Navigator.of(context).pop);
-
-  //   temp = loc.temp;
-  //   hum = loc.humidity;
-  //   air_speed = loc.air_speed;
-  //   des = loc.description;
-  //   main = loc.main;
-  //   icon = loc.icon;
-
-  //   Navigator.pushReplacementNamed(context, LoactionScreen.routeName,
-  //       arguments: {
-  //         "temp_value": temp,
-  //         "hum_value": hum,
-  //         "air_speed_value": air_speed,
-  //         "des_value": des,
-  //         "main_value": main,
-  //         "icon_value": icon,
-  //         "city_value": city,
-  //       });
-  // }
-
   @override
   void initState() {
     // TODO: implement initState
@@ -81,18 +36,7 @@ class _LoactionScreenState extends State<LoactionScreen> {
   @override
   Widget build(BuildContext context) {
     final info = ModalRoute.of(context)?.settings.arguments as Map;
-    //final search = ModalRoute.of(context)?.settings.arguments;
 
-    // if (search != null) {
-    //   search as Map;
-    //   if (search?.isNotEmpty ?? false) {
-    //     if (city == "") {
-    //       city = info['city_value'];
-    //     } else {
-    //       city = search['searchText'];
-    //     }
-    //   }
-    // }
     String temp = ((info['temp_value']).toString());
     String air = ((info['air_speed_value']).toString());
     if (temp == "NA") {

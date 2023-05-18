@@ -47,23 +47,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   }
 
   @override
-  // void setState(VoidCallback fn) {
-  //   // TODO: implement setStat
-  //   startApp(city);
-  //   super.setState(fn);
-  // }
-
-  @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    // final search = ModalRoute.of(context)?.settings.arguments;
-
-    // if (search != null) {
-    //   search as Map;
-    //   if (search?.isNotEmpty ?? false) {
-    //     city = search['searchText'];
-    //   }
-    // }
     return Scaffold(
       appBar: AppBar(
           title: Text(

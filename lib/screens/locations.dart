@@ -5,6 +5,7 @@ import 'package:weather/widgets/search_bar.dart';
 
 import '../models/constants.dart';
 import '../widgets/description.dart';
+import '../widgets/greetings.dart';
 import '../widgets/humidity_wid.dart';
 import '../widgets/speed.dart';
 import '../widgets/temp.dart';
@@ -35,15 +36,31 @@ class _LoactionScreenState extends State<LoactionScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     final info = ModalRoute.of(context)?.settings.arguments as Map;
 
     String temp = ((info['temp_value']).toString());
     String air = ((info['air_speed_value']).toString());
     if (temp == "NA") {
-      print("NA");
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        showDialog<Null>(
+          context: context,
+          builder: (ctx) => AlertDialog(
+            title: Text("An error occured"),
+            content: Text("Check Your City."),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text("Okay")),
+            ],
+          ),
+        );
+      });
     } else {
       temp = ((info['temp_value']).toString()).substring(0, 4);
-      air = ((info['air_speed_value']).toString()).substring(0, 4);
+      air = ((info['air_speed_value']).toString()).substring(0, 2);
     }
     String icon = info['icon_value'];
     String getcity = info['city_value'];
@@ -51,34 +68,42 @@ class _LoactionScreenState extends State<LoactionScreen> {
     String des = info['des_value'];
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: SafeArea(
-          child: Container(
-        color: mycon.primaryColor.withOpacity(.3),
-        child: Column(
-          children: [
-            SearchBox(),
-            SizedBox(
-              height: 5,
-            ),
-            Description(icon, des, getcity),
-            SizedBox(
-              height: 30,
-            ),
-            Temperature(temp),
-            SizedBox(
-              height: 30,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Humidity_wid(hum),
-                Speed(air),
-              ],
-            )
-          ],
-        ),
-      )),
+      body: SingleChildScrollView(
+        child: SafeArea(
+            child: Container(
+          //height: size.height,
+          width: size.width,
+          color: mycon.primaryColor.withOpacity(.6),
+          child: Column(
+            children: [
+              SearchBox(),
+              SizedBox(
+                height: 0,
+              ),
+              Greetings(),
+              SizedBox(
+                height: 10,
+              ),
+              Description(icon, des, getcity),
+              SizedBox(
+                height: 30,
+              ),
+              Temperature(temp),
+              SizedBox(
+                height: 30,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Humidity_wid(hum),
+                  Speed(air),
+                ],
+              )
+            ],
+          ),
+        )),
+      ),
     );
   }
 }

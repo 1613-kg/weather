@@ -34,16 +34,15 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     main = loc.main;
     icon = loc.icon;
 
-    Navigator.pushReplacementNamed(context, LoactionScreen.routeName,
-        arguments: {
-          "temp_value": temp,
-          "hum_value": hum,
-          "air_speed_value": air_speed,
-          "des_value": des,
-          "main_value": main,
-          "icon_value": icon,
-          "city_value": city,
-        });
+    Navigator.pushNamed(context, LoactionScreen.routeName, arguments: {
+      "temp_value": temp,
+      "hum_value": hum,
+      "air_speed_value": air_speed,
+      "des_value": des,
+      "main_value": main,
+      "icon_value": icon,
+      "city_value": city,
+    });
   }
 
   @override
@@ -55,36 +54,38 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         "Weather Updates",
         textAlign: TextAlign.center,
       )),
-      body: Container(
-        width: size.width,
-        height: size.height,
-        color: mycon.primaryColor.withOpacity(.3),
-        child: Center(
-            child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Image.asset('assets/get-started.png'),
-            SizedBox(
-              height: 30,
-            ),
-            Container(
-              height: 50,
-              width: size.width * 0.7,
-              decoration: BoxDecoration(
+      body: SingleChildScrollView(
+        child: Container(
+          width: size.width,
+          height: size.height,
+          color: mycon.primaryColor.withOpacity(.3),
+          child: Center(
+              child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Image.asset('assets/get-started.png'),
+              SizedBox(
+                height: 30,
+              ),
+              Container(
+                height: 50,
+                width: size.width * 0.7,
+                decoration: BoxDecoration(
                   color: mycon.primaryColor,
-                  borderRadius: BorderRadius.all(Radius.circular(12))),
-              child: OutlinedButton(
-                onPressed: () {
-                  startApp("Mumbai");
-                },
-                child: Center(
-                  child: Text("Get Started"),
+                ),
+                child: OutlinedButton(
+                  onPressed: () {
+                    startApp("Mumbai");
+                  },
+                  child: Center(
+                    child: Text("Get Weather Updates in your city"),
+                  ),
                 ),
               ),
-            ),
-          ],
-        )),
+            ],
+          )),
+        ),
       ),
     );
   }

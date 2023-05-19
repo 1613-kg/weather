@@ -29,7 +29,8 @@ class _SpeedState extends State<Speed> {
             padding: const EdgeInsets.all(20),
             child: Icon(
               WeatherIcons.windy,
-              size: 20,
+              size: 35,
+              color: Colors.lightBlue,
             ),
           ),
           Column(
@@ -38,11 +39,17 @@ class _SpeedState extends State<Speed> {
             children: [
               Text(
                 "${widget.speed}",
-                style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    fontSize: 35,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black54.withOpacity(0.7)),
               ),
               Text(
                 "km/hr",
-                style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    fontSize: 19,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black54.withOpacity(0.7)),
               ),
             ],
           )

@@ -17,7 +17,7 @@ class _DescriptionState extends State<Description> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 60,
+      height: 80,
       margin: EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
@@ -25,16 +25,26 @@ class _DescriptionState extends State<Description> {
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Image.network(
-              "http://openweathermap.org/img/wn/${widget.icon}@2x.png"),
+            "http://openweathermap.org/img/wn/${widget.icon}@2x.png",
+            color: Colors.blueAccent,
+            height: 80,
+            width: 80,
+          ),
           Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("${widget.desc}"),
-              Text("IN ${widget.loc}"),
+              Text(
+                "${widget.desc}".toUpperCase(),
+                style: TextStyle(fontSize: 15),
+              ),
+              Text(
+                "In ${widget.loc}".toUpperCase(),
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              ),
             ],
           )
         ],

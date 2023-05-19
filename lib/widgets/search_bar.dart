@@ -25,21 +25,7 @@ class _SearchBoxState extends State<SearchBox> {
 
   void startApp(String city) async {
     information loc = information(city, temp, hum, air_speed, des, main, icon);
-    await loc.getData(); //.catchError((error) {
-    //   return showDialog<Null>(
-    //       context: context,
-    //       builder: (ctx) => AlertDialog(
-    //             title: Text("An  error occured"),
-    //             content: Text("Something went wrong."),
-    //             actions: [
-    //               TextButton(
-    //                   onPressed: () {
-    //                     Navigator.of(context).pop();
-    //                   },
-    //                   child: Text("Okay")),
-    //             ],
-    //           ));
-    // }).then((_) => Navigator.of(context).pop);
+    await loc.getData();
 
     temp = loc.temp;
     hum = loc.humidity;
@@ -90,7 +76,7 @@ class _SearchBoxState extends State<SearchBox> {
               child: TextField(
             controller: _textEditingController,
             decoration: InputDecoration(
-                border: InputBorder.none, hintText: "Search any city name"),
+                border: InputBorder.none, hintText: "Search your city"),
           ))
         ],
       ),

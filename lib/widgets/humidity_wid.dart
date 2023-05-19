@@ -29,7 +29,8 @@ class _Humidity_widState extends State<Humidity_wid> {
             padding: const EdgeInsets.all(20),
             child: Icon(
               WeatherIcons.humidity,
-              size: 20,
+              size: 30,
+              color: Colors.lightBlue,
             ),
           ),
           Column(
@@ -37,12 +38,11 @@ class _Humidity_widState extends State<Humidity_wid> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                "${widget.hum}",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-              Text(
-                "percent",
-                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                "${widget.hum}%",
+                style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black54.withOpacity(0.7)),
               ),
             ],
           )

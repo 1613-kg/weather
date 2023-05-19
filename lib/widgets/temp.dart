@@ -23,12 +23,14 @@ class _TemperatureState extends State<Temperature> {
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Padding(
             padding: const EdgeInsets.all(20),
             child: Icon(
               WeatherIcons.thermometer,
               size: 40,
+              color: Colors.redAccent.withOpacity(0.7),
             ),
           ),
           Row(
@@ -36,11 +38,21 @@ class _TemperatureState extends State<Temperature> {
             children: [
               Text(
                 "${widget.temp}",
-                style: TextStyle(fontSize: 80, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    fontSize: 80,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black87.withOpacity(0.7)),
+              ),
+              Icon(
+                Icons.circle_outlined,
+                size: 15,
               ),
               Text(
                 "C",
-                style: TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    fontSize: 45,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black45.withOpacity(0.7)),
               ),
             ],
           )
